@@ -58,7 +58,7 @@ variable hostname {
 resource "softlayer_virtual_guest" "centos_small_virtual_guest" {
   name = "${var.hostname}",
 	image = "CentOS_7_64"
-  domain = "cam.ibm.com",
+  domain = "schematics.ibm.com",
   region = "${var.datacenter}",
   public_network_speed = 10,
   hourly_billing = true,
