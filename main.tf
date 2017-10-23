@@ -53,8 +53,8 @@ variable hostname {
 # Outputs
 ##############################################################################
 output "vm_detail" {
-  value = "${ibm_compute_ssh_key.twc_terraform_sample.id}"
-  value = "${ibm_compute_ssh_key.twc_terraform_sample.ipv4_address}"
-  value = "${ibm_compute_ssh_key.twc_terraform_sample.ip_address_id_private}"
-  value = "${ibm_compute_ssh_key.twc_terraform_sample.ipv4_address_private}"
+  value = "${ibm_compute_vm_instance.twc_terraform_sample.id}"
+  value = "${ibm_compute_vm_instance.twc_terraform_sample.ipv4_address}"
+  value = "${ibm_compute_vm_instance.twc_terraform_sample.ip_address_id_private}"
+  value = "${ibm_compute_vm_instance.twc_terraform_sample.ipv4_address_private}"
 }
