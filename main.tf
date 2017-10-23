@@ -45,9 +45,6 @@ variable slapikey {
 variable datacenter {
   description = "The data center that you want to create resources in. You can run bluemix cs locations to see a list of all data centers in your region."
 }
-variable public_key {
-  description = "The public key material for the SSH keypair."
-}
 variable hostname {
   description = "Name of Hostmachine"
 }
