@@ -15,13 +15,19 @@ provider "ibm" {
 }
 
 ##############################################################################
-# IBM SSH Key: For connecting to VMs
+# IBM VMI: VM instance
 ##############################################################################
-resource "ibm_compute_ssh_key" "ssh_key" {
-  label = "${var.key_label}"
-  notes = "${var.key_note}"
-  # Public key, so this is completely safe
-  public_key = "${var.public_key}"
+resource "ibm_compute_vm_instance" "twc_terraform_sample" {
+    hostname = "${var.hostname}"
+    domain = "bar.example.com"
+    os_reference_code = "REDHAT_6_64"
+    datacenter = "syd01"
+    network_speed = 100
+    hourly_billing = true
+    private_network_only = false
+    cores = 1
+    memory = 1024
+    user_metadata = "{\"value\":\"newvalue\"}"
 }
 
 ##############################################################################
@@ -39,19 +45,16 @@ variable slapikey {
 variable datacenter {
   description = "The data center that you want to create resources in. You can run bluemix cs locations to see a list of all data centers in your region."
 }
-variable public_key {
-  description = "The public key material for the SSH keypair."
-}
-variable key_label {
-  description = "An identifying label to assign to the SSH key."
-}
-variable key_note {
-  description = "Notes to store with the SSH key."
+variable hostname {
+  description = "Name of Hostmachine"
 }
 
 ##############################################################################
 # Outputs
 ##############################################################################
-output "ssh_key_id" {
-  value = "${ibm_compute_ssh_key.ssh_key.id}"
+output "vm_detail" {
+  value = "${ibm_compute_vm_instance.twc_terraform_sample.id}"
+  value = "${ibm_compute_vm_instance.twc_terraform_sample.ipv4_address}"
+  value = "${ibm_compute_vm_instance.twc_terraform_sample.ip_address_id_private}"
+  value = "${ibm_compute_vm_instance.twc_terraform_sample.ipv4_address_private}"
 }
